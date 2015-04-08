@@ -79,4 +79,3 @@ def loop():
 if __name__ == '__main__':
     maze = Maze(16)
     print maze.map[7][7]
-
