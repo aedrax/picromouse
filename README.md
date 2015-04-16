@@ -1,8 +1,8 @@
-## onu_micromouse_python
+## micromouse_python
 
 #### Introduction
 
-This is meant to program a Raspberry Pi to autonomously solve a square maze, which is described in more detail below.
+This is meant to program a Raspberry Pi to autonomously solve a square maze, which is described in more detail below. Originally written by Sam Roth during the Spring 2015 semester, for use by the 2015-2016 Micromouse team.
 
 #### The Maze
 
