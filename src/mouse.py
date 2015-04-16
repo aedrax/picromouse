@@ -62,8 +62,10 @@ class Maze:
     map = []
 
     def __init__(self, size):
+
         x = 0
         y = 0
+
         for i in range(((size - 1) / 2) + 1):
             full = size - 1 - i
             half = ((size - 1) / 2) - i
@@ -96,7 +98,12 @@ class Maze:
         return self.map
 
 
+def sensor_read(sensor):
+    return 0
+
+
 def begin():
+
     mouse = Mouse()
     mouse.set_coordinates(0, 0)
 
@@ -110,10 +117,6 @@ def begin():
     # while True:
     #   mouse.get_data(n, e, s, w)
     #   Next, compare the four values.
-
-
-def sensor_read(sensor):
-    return 0
 
 
 if __name__ == '__main__':
