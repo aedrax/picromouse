@@ -99,6 +99,7 @@ class Maze:
 def begin():
     mouse = Mouse()
     mouse.set_coordinates(0, 0)
+
     n = 0
     e = 0
     s = 0
@@ -106,9 +107,9 @@ def begin():
 
     print maze.map[2][2].get_weight()
 
-    #while True:
-        # mouse.get_data(n, e, s, w)
-        # Next, compare the four values.
+    # while True:
+    #   mouse.get_data(n, e, s, w)
+    #   Next, compare the four values.
 
 
 def sensor_read(sensor):
