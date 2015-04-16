@@ -12,6 +12,10 @@ Last revised: 14 APRIL 2015
 class Cell:
 
     weight = 0
+    visited = None
+
+    def __init__(self):
+        self.visited = False
 
     def get_weight(self):
         return self.weight
