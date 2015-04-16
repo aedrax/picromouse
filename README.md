@@ -1,3 +1,11 @@
+## onu_micromouse_python
+
+#### Introduction
+
+This is meant to program a Raspberry Pi to autonomously solve a square maze, which is described in more detail below.
+
+#### The Maze
+
 The maze object must be instantiated with the size parameter, which will be used to
 create the array that the algorithm will use to navigate to the center. For now, this
 will only work with square mazes.
