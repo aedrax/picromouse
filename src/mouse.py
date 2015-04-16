@@ -11,22 +11,9 @@ Last revised: 14 APRIL 2015
 
 class Cell:
 
-    x = 0
-    y = 0
-
     weight = 0
 
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def get_coordinates(self):
-        return [self.x, self.x]
-
     def get_weight(self):
-        return self.weight
-
-    def __getitem__(self, item):
         return self.weight
 
 
@@ -63,19 +50,16 @@ class Maze:
 
     def __init__(self, size):
 
-        x = 0
-        y = 0
-
         for i in range(((size - 1) / 2) + 1):
             full = size - 1 - i
             half = ((size - 1) / 2) - i
             row = []
             for j in list(reversed(range(half, full))):
-                cell = Cell(x, y)
+                cell = Cell()
                 cell.weight = j
                 row.append(cell)
             for j in range(half, full):
-                cell = Cell(x, y)
+                cell = Cell()
                 cell.weight = j
                 row.append(cell)
             self.map.append(row)
@@ -85,17 +69,14 @@ class Maze:
             half = ((size - 1) / 2) - i
             row = []
             for j in list(reversed(range(half, full))):
-                cell = Cell(x, y)
+                cell = Cell()
                 cell.weight = j
                 row.append(cell)
             for j in range(half, full):
-                cell = Cell(x, y)
+                cell = Cell()
                 cell.weight = j
                 row.append(cell)
             self.map.append(row)
-
-    def __getitem__(self, item):
-        return self.map
 
 
 def sensor_read(sensor):
@@ -112,7 +93,7 @@ def begin():
     s = 0
     w = 0
 
-    print maze.map[2][2].get_weight()
+    print maze.map[0][0].get_weight()
 
     # while True:
     #   mouse.get_data(n, e, s, w)
@@ -120,5 +101,5 @@ def begin():
 
 
 if __name__ == '__main__':
-    maze = Maze(6)
+    maze = Maze(8)
     begin()
