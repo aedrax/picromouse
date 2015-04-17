@@ -65,6 +65,9 @@ class Mouse:
         self.s_distance = sensor_read(s)
         self.w_distance = sensor_read(w)
 
+# TESTS FOR MOUSE
+# For each method
+
 
 class Maze:
     map = []
@@ -113,6 +116,10 @@ class Maze:
                 y += 1
             self.map.append(row)
             x += 1
+
+# TESTS FOR MAZE
+# Tons of tests for init
+# Check resulting cell coordinates and weights
 
 
 def sensor_read(sensor):
