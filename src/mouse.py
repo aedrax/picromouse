@@ -36,9 +36,9 @@ class TestCellMethods(unittest.TestCase):
         self.assertEqual(c.get_weight(), 0)
         # Make sure that an updated weight value for a Cell
         # object is reflected in the get_weight() method.
-        int = randint(0, 15)
-        c.weight = int
-        self.assertEqual(c.get_weight(), int)
+        some_integer = randint(0, 15)
+        c.weight = some_integer
+        self.assertEqual(c.get_weight(), some_integer)
 
 
 class Mouse:
