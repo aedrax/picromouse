@@ -4,9 +4,11 @@ MICROMOUSE ALGORITHM
 Python Edition
 
 Written by Sam Roth
-Last revised: 14 APRIL 2015
+Last revised: 16 APRIL 2015
 
 """
+
+import unittest
 
 
 class Cell:
@@ -121,12 +123,16 @@ def find_path(mouse, maze):
         print i.x, i.y, i.weight
 
 
+def take_path(mouse, maze):
+    return 0
+
+
 def begin():
     mouse = Mouse()
     maze = Maze(16)
     mouse.set_coordinates(0, 0)
-    # print maze.map[mouse.x][mouse.y].get_weight()
     find_path(mouse, maze)
+    take_path(mouse, maze)
 
 
 if __name__ == '__main__':
