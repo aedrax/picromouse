@@ -103,6 +103,11 @@ def sensor_read(sensor):
 
 
 def find_path(mouse, maze):
+    """
+    :param mouse: The mouse that will be navigating the maze.
+    :param maze: The maze that has predefined cells with weights.
+    :return: The cell object determined to be the best path.
+    """
     xn = mouse.x - 1
     ye = mouse.y + 1
     xs = mouse.x + 1
@@ -124,10 +129,18 @@ def find_path(mouse, maze):
 
 
 def take_path(mouse, maze):
+    """
+    :param mouse: The mouse that will be navigating the maze.
+    :param maze: The maze that has predefined cells with weights.
+    :return: None; however, mouse.x and mouse.y are updated.
+    """
     return 0
 
 
 def begin():
+    """
+    :return: None. This function begins micromouse operation.
+    """
     mouse = Mouse()
     maze = Maze(16)
     mouse.set_coordinates(0, 0)
