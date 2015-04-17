@@ -10,7 +10,8 @@ Last revised: 14 APRIL 2015
 
 
 class Cell:
-
+    x = 0
+    y = 0
     weight = 0
     visited = None
 
@@ -22,10 +23,8 @@ class Cell:
 
 
 class Mouse:
-
     x = 0
     y = 0
-
     n_distance = 0
     e_distance = 0
     s_distance = 0
@@ -49,61 +48,86 @@ class Mouse:
 
 
 class Maze:
-
     map = []
 
     def __init__(self, size):
-
+        x = 0
         for i in range(((size - 1) / 2) + 1):
             full = size - 1 - i
             half = ((size - 1) / 2) - i
             row = []
+            y = 0
             for j in list(reversed(range(half, full))):
                 cell = Cell()
+                cell.x = x
+                cell.y = y
                 cell.weight = j
                 row.append(cell)
+                y += 1
             for j in range(half, full):
                 cell = Cell()
+                cell.x = x
+                cell.y = y
                 cell.weight = j
                 row.append(cell)
+                y += 1
             self.map.append(row)
-
+            x += 1
         for i in list(reversed(range((size/2)))):
             full = size - 1 - i
             half = ((size - 1) / 2) - i
             row = []
+            y = 0
             for j in list(reversed(range(half, full))):
                 cell = Cell()
+                cell.x = x
+                cell.y = y
                 cell.weight = j
                 row.append(cell)
+                y += 1
             for j in range(half, full):
                 cell = Cell()
+                cell.x = x
+                cell.y = y
                 cell.weight = j
                 row.append(cell)
+                y += 1
             self.map.append(row)
+            x += 1
 
 
 def sensor_read(sensor):
     return 0
 
 
+def find_path(mouse, maze):
+    xn = mouse.x - 1
+    ye = mouse.y + 1
+    xs = mouse.x + 1
+    yw = mouse.y - 1
+    n = maze.map[xn][mouse.y]
+    e = maze.map[mouse.x][ye]
+    s = maze.map[xs][mouse.y]
+    w = maze.map[mouse.x][yw]
+    options = [n, e, s, w]
+    best_case = min(n.get_weight(), e.get_weight(), s.get_weight(), w.get_weight())
+    best_options = []
+
+    for i in options:
+        if i.get_weight() is best_case:
+            best_options.append(i)
+
+    for i in best_options:
+        print i.x, i.y, i.weight
+
+
 def begin():
-
     mouse = Mouse()
+    maze = Maze(16)
     mouse.set_coordinates(0, 0)
-
-    n = 0
-    e = 0
-    s = 0
-    w = 0
-
-    print maze.map[0][0].get_weight()
-
-    # while True:
-    #   mouse.get_data(n, e, s, w)
-    #   Next, compare the four values.
+    # print maze.map[mouse.x][mouse.y].get_weight()
+    find_path(mouse, maze)
 
 
 if __name__ == '__main__':
-    maze = Maze(8)
     begin()
