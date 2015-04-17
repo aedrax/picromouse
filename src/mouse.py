@@ -49,8 +49,11 @@ class Mouse:
     s_distance = 0
     w_distance = 0
 
-    def __init__(self):
+    def __init__(self, x, y, maze):
         print "Hello world!"
+        self.x = x
+        self.y = y
+        maze.map[x][y].visited = True
 
     def get_coordinates(self):
         return [self.x, self.y]
@@ -165,8 +168,8 @@ def begin():
     """
     :return: None. This function begins micromouse operation.
     """
-    mouse = Mouse()
     maze = Maze(16)
+    mouse = Mouse(0, 0, maze)
     mouse.set_coordinates(0, 0)
     find_path(mouse, maze)
     take_path(mouse, maze)
