@@ -8,6 +8,7 @@ Last revised: 16 APRIL 2015
 
 """
 
+from random import randint
 import unittest
 
 
@@ -22,6 +23,22 @@ class Cell:
 
     def get_weight(self):
         return self.weight
+
+    def get_coordinates(self):
+        return [self.x, self.y]
+
+
+class TestCellMethods(unittest.TestCase):
+    def test_get_weight(self):
+        # Make sure a newly-initialized Cell object
+        # has the appropriate weight value.
+        c = Cell()
+        self.assertEqual(c.get_weight(), 0)
+        # Make sure that an updated weight value for a Cell
+        # object is reflected in the get_weight() method.
+        int = randint(0, 15)
+        c.weight = int
+        self.assertEqual(c.get_weight(), int)
 
 
 class Mouse:
