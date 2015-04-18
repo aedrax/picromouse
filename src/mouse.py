@@ -18,6 +18,8 @@ class Cell:
     weight = 0
     visited = None
 
+    # How should I approach the issue of cell walls?
+
     def __init__(self):
         self.visited = False
 
@@ -87,6 +89,7 @@ class Mouse:
         # Add current coordinates to stack
         # Move to west cell
         self.y -= 1
+
 
 class TestMouseMethods(unittest.TestCase):
     def return_zero(self):
