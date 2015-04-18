@@ -49,10 +49,9 @@ class Mouse:
         return best_options[choice]
 
     def take_path(self, next_cell):
-        print self.x, self.y
         self.x = next_cell.x
         self.y = next_cell.y
-        print self.x, self.y
+        next_cell.visited = True
 
     def get_coordinates(self):
         return [self.x, self.y]
