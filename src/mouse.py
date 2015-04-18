@@ -68,6 +68,25 @@ class Mouse:
         self.s_distance = sensor_read(s)
         self.w_distance = sensor_read(w)
 
+    def move_north(self):
+        # Add current coordinates to stack
+        # Move to north cell
+        self.x -= 1
+
+    def move_east(self):
+        # Add current coordinates to stack
+        # Move to east cell
+        self.y += 1
+
+    def move_south(self):
+        # Add current coordinates to stack
+        # Move to south cell
+        self.x += 1
+
+    def move_west(self):
+        # Add current coordinates to stack
+        # Move to west cell
+        self.y -= 1
 
 class TestMouseMethods(unittest.TestCase):
     def return_zero(self):
@@ -148,11 +167,14 @@ def find_path(mouse, maze):
     ye = mouse.y + 1
     xs = mouse.x + 1
     yw = mouse.y - 1
+
     n = maze.map[xn][mouse.y]
     e = maze.map[mouse.x][ye]
     s = maze.map[xs][mouse.y]
     w = maze.map[mouse.x][yw]
+
     options = [n, e, s, w]
+
     best_case = min(n.get_weight(), e.get_weight(), s.get_weight(), w.get_weight())
     best_options = []
 
