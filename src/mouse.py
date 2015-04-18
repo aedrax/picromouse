@@ -182,17 +182,24 @@ def find_path(mouse, maze):
         if i.get_weight() is best_case:
             best_options.append(i)
 
-    for i in best_options:
-        print i.x, i.y, i.weight
+    choice = randint(0, len(best_options) - 1)
+    return best_options[choice]
 
 
-def take_path(mouse, maze):
+def take_path(mouse, maze, next_cell):
     """
     :param mouse: The mouse that will be navigating the maze.
     :param maze: The maze that has predefined cells with weights.
+    :param next_cell: The cell that the mouse will be moving to.
     :return: None; however, mouse.x and mouse.y are updated.
     """
-    return 0
+
+    print mouse.x, mouse.y
+
+    mouse.x = next_cell.x
+    mouse.y = next_cell.y
+
+    print mouse.x, mouse.y
 
 
 def begin():
@@ -202,8 +209,8 @@ def begin():
     maze = Maze(16)
     mouse = Mouse(0, 0, maze)
     mouse.set_coordinates(0, 0)
-    find_path(mouse, maze)
-    take_path(mouse, maze)
+    path = find_path(mouse, maze)
+    take_path(mouse, maze, path)
 
 
 if __name__ == '__main__':
