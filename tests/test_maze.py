@@ -1,3 +1,4 @@
+from micromouse import maze
 import unittest
 
 
