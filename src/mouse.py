@@ -9,7 +9,6 @@ Last revised: 17 APRIL 2015
 """
 
 from random import randint
-import unittest
 
 
 class Cell:
@@ -28,22 +27,6 @@ class Cell:
 
     def get_coordinates(self):
         return [self.x, self.y]
-
-
-class TestCellMethods(unittest.TestCase):
-    def test_get_weight(self):
-        # Make sure a newly-initialized Cell object
-        # has the appropriate weight value.
-        c = Cell()
-        self.assertEqual(c.get_weight(), 0)
-        # Make sure that an updated weight value for a Cell
-        # object is reflected in the get_weight() method.
-        some_integer = randint(0, 15)
-        c.weight = some_integer
-        self.assertEqual(c.get_weight(), some_integer)
-
-    def test_get_coordinates(self):
-        return 0
 
 
 class Mouse:
@@ -124,29 +107,6 @@ class Mouse:
         self.y -= 1
 
 
-class TestMouseMethods(unittest.TestCase):
-    def test_get_coordinates(self):
-        return 0
-
-    def test_set_coordinates(self):
-        return 0
-
-    def test_sensor_read(self):
-        return 0
-
-    def test_move_north(self):
-        return 0
-
-    def test_move_east(self):
-        return 0
-
-    def test_move_south(self):
-        return 0
-
-    def test_move_west(self):
-        return 0
-
-
 class Maze:
     map = []
 
@@ -194,17 +154,6 @@ class Maze:
                 y += 1
             self.map.append(row)
             x += 1
-
-
-class TestMazeMethods(unittest.TestCase):
-
-    # To add:
-    # Methods for initialized cells, specifically their coordinates
-    # and responding weights. Do references from maze match up with
-    # the object attributes x and y?g
-
-    def return_zero(self):
-        return 0
 
 
 def begin():

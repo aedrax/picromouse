@@ -1,1 +1,2 @@
-__author__ = 'samuelroth'
+__author__ = 'Samuel Roth'
+__name__ = 'micromouse'
