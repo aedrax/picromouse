@@ -1,19 +1,22 @@
 from random import randint
+from micromouse import maze
 
 
 class Mouse:
     x = 0
     y = 0
+    maze = []
     n_distance = 0
     e_distance = 0
     s_distance = 0
     w_distance = 0
 
-    def __init__(self, x, y, maze):
+    def __init__(self, x, y, some_maze):
         print "Hello world!"
         self.x = x
         self.y = y
-        maze.map[x][y].visited = True
+        self.maze = some_maze
+        some_maze.map[x][y].visited = True
 
     def sensor_read(self, direction):
         if direction is 'north':
@@ -27,15 +30,15 @@ class Mouse:
         else:
             print "Usage error: sensor_read(north|east|south|west)"
 
-    def find_path(self, maze):
+    def find_path(self):
         xn = self.x - 1
         ye = self.y + 1
         xs = self.x + 1
         yw = self.y - 1
-        n = maze.map[xn][self.y]
-        e = maze.map[self.x][ye]
-        s = maze.map[xs][self.y]
-        w = maze.map[self.x][yw]
+        n = self.maze.map[xn][self.y]
+        e = self.maze.map[self.x][ye]
+        s = self.maze.map[xs][self.y]
+        w = self.maze.map[self.x][yw]
         options = [n, e, s, w]
         best_case = min(n.get_weight(), e.get_weight(), s.get_weight(), w.get_weight())
         best_options = []
@@ -45,7 +48,7 @@ class Mouse:
         choice = randint(0, len(best_options) - 1)
         return best_options[choice]
 
-    def take_path(self, maze, next_cell):
+    def take_path(self, next_cell):
         print self.x, self.y
         self.x = next_cell.x
         self.y = next_cell.y
