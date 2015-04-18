@@ -42,6 +42,9 @@ class TestCellMethods(unittest.TestCase):
         c.weight = some_integer
         self.assertEqual(c.get_weight(), some_integer)
 
+    def test_get_coordinates(self):
+        return 0
+
 
 class Mouse:
     x = 0
@@ -92,7 +95,25 @@ class Mouse:
 
 
 class TestMouseMethods(unittest.TestCase):
-    def return_zero(self):
+    def test_get_coordinates(self):
+        return 0
+
+    def test_set_coordinates(self):
+        return 0
+
+    def test_get_data(self):
+        return 0
+
+    def test_move_north(self):
+        return 0
+    
+    def test_move_east(self):
+        return 0
+
+    def test_move_south(self):
+        return 0
+
+    def test_move_west(self):
         return 0
 
 
