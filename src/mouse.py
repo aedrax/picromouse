@@ -60,18 +60,48 @@ class Mouse:
         self.y = y
         maze.map[x][y].visited = True
 
+    def sensor_read(self, direction):
+        if direction is 'north':
+            self.n_distance = 0
+        elif direction is 'east':
+            self.e_distance = 1
+        elif direction is 'south':
+            self.s_distance = 2
+        elif direction is 'west':
+            self.w_distance = 3
+        else:
+            print "Usage error: sensor_read(north|east|south|west)"
+
+    def find_path(self, maze):
+        xn = self.x - 1
+        ye = self.y + 1
+        xs = self.x + 1
+        yw = self.y - 1
+        n = maze.map[xn][self.y]
+        e = maze.map[self.x][ye]
+        s = maze.map[xs][self.y]
+        w = maze.map[self.x][yw]
+        options = [n, e, s, w]
+        best_case = min(n.get_weight(), e.get_weight(), s.get_weight(), w.get_weight())
+        best_options = []
+        for i in options:
+            if i.get_weight() is best_case:
+                best_options.append(i)
+        choice = randint(0, len(best_options) - 1)
+        return best_options[choice]
+
+    def take_path(self, maze, next_cell):
+        print self.x, self.y
+        self.x = next_cell.x
+        self.y = next_cell.y
+        print self.x, self.y
+
     def get_coordinates(self):
         return [self.x, self.y]
 
     def set_coordinates(self, x, y):
         self.x = x
         self.y = y
-
-    def get_data(self, n, e, s, w):
-        self.n_distance = sensor_read(n)
-        self.e_distance = sensor_read(e)
-        self.s_distance = sensor_read(s)
-        self.w_distance = sensor_read(w)
 
     def move_north(self):
         # Add current coordinates to stack
@@ -101,12 +131,12 @@ class TestMouseMethods(unittest.TestCase):
     def test_set_coordinates(self):
         return 0
 
-    def test_get_data(self):
+    def test_sensor_read(self):
         return 0
 
     def test_move_north(self):
         return 0
-    
+
     def test_move_east(self):
         return 0
 
@@ -177,55 +207,6 @@ class TestMazeMethods(unittest.TestCase):
         return 0
 
 
-def sensor_read(sensor):
-    return 0
-
-
-def find_path(mouse, maze):
-    """
-    :param mouse: The mouse that will be navigating the maze.
-    :param maze: The maze that has predefined cells with weights.
-    :return: The cell object determined to be the best path.
-    """
-    xn = mouse.x - 1
-    ye = mouse.y + 1
-    xs = mouse.x + 1
-    yw = mouse.y - 1
-
-    n = maze.map[xn][mouse.y]
-    e = maze.map[mouse.x][ye]
-    s = maze.map[xs][mouse.y]
-    w = maze.map[mouse.x][yw]
-
-    options = [n, e, s, w]
-
-    best_case = min(n.get_weight(), e.get_weight(), s.get_weight(), w.get_weight())
-    best_options = []
-
-    for i in options:
-        if i.get_weight() is best_case:
-            best_options.append(i)
-
-    choice = randint(0, len(best_options) - 1)
-    return best_options[choice]
-
-
-def take_path(mouse, maze, next_cell):
-    """
-    :param mouse: The mouse that will be navigating the maze.
-    :param maze: The maze that has predefined cells with weights.
-    :param next_cell: The cell that the mouse will be moving to.
-    :return: None; however, mouse.x and mouse.y are updated.
-    """
-
-    print mouse.x, mouse.y
-
-    mouse.x = next_cell.x
-    mouse.y = next_cell.y
-
-    print mouse.x, mouse.y
-
-
 def begin():
     """
     :return: None. This function begins micromouse operation.
@@ -233,8 +214,8 @@ def begin():
     maze = Maze(16)
     mouse = Mouse(0, 0, maze)
     mouse.set_coordinates(0, 0)
-    path = find_path(mouse, maze)
-    take_path(mouse, maze, path)
+    path = mouse.find_path(maze)
+    mouse.take_path(maze, path)
 
 
 if __name__ == '__main__':
