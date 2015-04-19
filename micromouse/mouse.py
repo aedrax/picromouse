@@ -13,7 +13,7 @@ class Mouse:
     w_distance = 0
 
     def __init__(self, x, y, some_maze):
-        print "Hello world!"
+        print "Micromouse initialized. Hello world!"
         self.x = x
         self.y = y
         self.maze = some_maze
