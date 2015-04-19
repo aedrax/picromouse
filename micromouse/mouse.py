@@ -6,6 +6,7 @@ class Mouse:
     x = 0
     y = 0
     maze = []
+    visited = []
     n_distance = 0
     e_distance = 0
     s_distance = 0
@@ -51,7 +52,7 @@ class Mouse:
     def take_path(self, next_cell):
         self.x = next_cell.x
         self.y = next_cell.y
-        next_cell.visited = True
+        self.visited.append(next_cell)
 
     def get_coordinates(self):
         return [self.x, self.y]
